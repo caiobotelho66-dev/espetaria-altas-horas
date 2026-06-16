@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Adega Espetaria Altas Horas — Point Quente em Batistini, São Bernardo do Campo. Espetos, feijoadinha, frango assado de domingo e cerveja gelada." />
+<title>Adega Espetaria Altas Horas — Point Quente | Batistini SBC</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<style>
+  :root{
+    --black:#0A0A0A;
+    --black-2:#111111;
+    --red:#CC1A1A;
+    --gold:#D4A017;
+    --white:#F0EDE8;
+    --orange:#E8520A;
+    --green:#25D366;
+    --green-bg:#dcf8c6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--black);
+    color:var(--white);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* NAVBAR */
+  .navbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(5,5,5,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--red);
+    box-shadow:0 2px 30px rgba(204,26,26,.2), 0 4px 60px rgba(0,0,0,.8);
+    transition:padding .3s ease;
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1200px;margin:0 auto;
+  }
+  .nav-brand{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:1.05rem;letter-spacing:2px;color:var(--gold);
+    display:flex;align-items:center;gap:10px;
+  }
+  .nav-brand span.crown{color:var(--gold);}
+  .nav-brand .sep{
+    color:var(--gold);opacity:.4;margin:0 8px;
+    font-weight:400;
+  }
+  .nav-cta{
+    background:var(--green);color:#062b15;font-weight:600;
+    padding:10px 18px;border-radius:4px;display:inline-flex;align-items:center;gap:8px;
+    font-size:.9rem;transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:0 6px 18px rgba(37,211,102,.3);
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.45)}
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:120px 20px 60px;overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(232,82,10,.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(204,26,26,.2) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 80%, rgba(212,160,23,.12) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 50%, rgba(10,10,10,0) 0%, #050505 100%),
+      #050505;
+  }
+  #embers-canvas{
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+    pointer-events:none;
+  }
+  #noise-overlay{
+    position:absolute;inset:0;width:100%;height:100%;z-index:1;
+    pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+  }
+  .hero > *{position:relative;z-index:2}
+
+  .hero-brand{text-align:center;margin-bottom:28px}
+  .hero-logo{
+    width:clamp(120px, 30vw, 200px);
+    height:auto;
+    object-fit:contain;
+    filter:drop-shadow(0 0 30px rgba(204,26,26,0.5)) drop-shadow(0 0 60px rgba(232,82,10,0.3));
+    margin-bottom:16px;
+  }
+  .brand-fire-line{font-size:2rem;letter-spacing:16px;margin-bottom:4px}
+  .brand-title{display:flex;flex-direction:column;line-height:0.88}
+  .brand-adega{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(1rem,3vw,1.4rem);
+    letter-spacing:20px;
+    color:#888;
+    text-transform:uppercase;
+  }
+  .brand-espetaria{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3rem,10vw,7rem);
+    letter-spacing:6px;
+    color:var(--white);
+    text-shadow:0 0 60px rgba(232,82,10,0.5), 0 2px 0 #000;
+    line-height:0.9;
+  }
+  .brand-altas{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4rem,14vw,10rem);
+    letter-spacing:-2px;
+    color:var(--red);
+    text-shadow:0 0 80px rgba(204,26,26,0.8), 0 4px 0 #4a0000;
+    line-height:0.85;
+  }
+  .brand-horas{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4rem,14vw,10rem);
+    letter-spacing:-2px;
+    color:var(--gold);
+    text-shadow:0 0 60px rgba(212,160,23,0.6), 0 4px 0 #3a2800;
+    line-height:0.85;
+  }
+  .brand-crown{
+    font-family:'Oswald',sans-serif;
+    font-size:clamp(.7rem,1.5vw,1rem);
+    letter-spacing:8px;
+    color:var(--gold);
+    margin-top:12px;
+    opacity:0.8;
+  }
+  .brand-separator{
+    width:120px;height:3px;
+    background:linear-gradient(90deg, transparent, var(--red), var(--gold), transparent);
+    margin:16px auto 0;
+  }
+
+  .hero h1{
+    font-size:clamp(2rem,5vw,3.4rem);color:var(--white);
+    max-width:900px;margin:10px auto 16px;line-height:1.1;
+  }
+  .hero h1 .accent{color:var(--red);text-shadow:0 0 20px rgba(204,26,26,0.5)}
+  .hero h2{
+    font-size:clamp(.9rem,2vw,1.1rem);color:var(--gold);
+    letter-spacing:5px;font-weight:500;margin-bottom:30px;
+  }
+
+  .status-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:10px 20px;border-radius:999px;font-weight:600;
+    margin-bottom:28px;font-size:.95rem;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.6);
+  }
+  .status-badge.open{color:#7ee59a;border-color:rgba(126,229,154,.4)}
+  .status-badge.closed{color:#ff8b8b;border-color:rgba(255,139,139,.35)}
+  .status-badge .dot{
+    width:10px;height:10px;border-radius:50%;
+    display:inline-block;
+  }
+  .status-badge.open .dot{background:#25D366;box-shadow:0 0 12px #25D366}
+  .status-badge.closed .dot{background:#ff4d4d;box-shadow:0 0 12px #ff4d4d}
+
+  .cta-main{
+    background:linear-gradient(135deg, #1db954, #25D366);
+    color:#052a13;
+    font-family:'Oswald',sans-serif;
+    font-size:1.2rem;
+    letter-spacing:2px;
+    padding:18px 40px;
+    border-radius:6px;
+    display:inline-flex;align-items:center;gap:12px;
+    box-shadow:0 8px 32px rgba(37,211,102,.4), inset 0 1px 0 rgba(255,255,255,.2);
+    text-transform:uppercase;font-weight:700;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cta-main:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(37,211,102,.5)}
+  .cta-main i{font-size:1.3rem}
+
+  .scroll-indicator{
+    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+    color:var(--gold);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;
+    opacity:.8;animation:bounce 2s infinite;
+    z-index:2;
+  }
+  .scroll-indicator i{display:block;margin-top:6px;font-size:1rem}
+  @keyframes bounce{
+    0%,100%{transform:translate(-50%,0)}
+    50%{transform:translate(-50%,8px)}
+  }
+
+  /* SECTION DIVIDER */
+  .section-divider{
+    height:2px;
+    background:linear-gradient(90deg, transparent 0%, #E8520A 25%, #D4A017 50%, #CC1A1A 75%, transparent 100%);
+    opacity:.9;margin:0;border:none;
+  }
+  .section-divider-alt{
+    height:60px;
+    background:linear-gradient(180deg, #080808, #0f0500, #080808);
+    position:relative;
+  }
+  .section-divider-alt::after{
+    content:"🔥 • 🍺 • 🥩 • 🔥";
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    font-size:.7rem;letter-spacing:16px;color:rgba(212,160,23,0.3);
+  }
+
+  /* SECTION GENERIC */
+  section{padding:90px 0;position:relative}
+  .section-title{
+    text-align:center;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2rem,5vw,3.5rem);
+    letter-spacing:6px;
+    color:var(--white);
+    text-shadow:2px 2px 0 rgba(204,26,26,.4);
+    margin-bottom:8px;
+  }
+  .section-title .under{
+    display:block;width:60px;height:3px;
+    background:linear-gradient(90deg, var(--red), var(--gold));
+    margin:10px auto 0;border-radius:0;
+  }
+  .section-subtitle{
+    text-align:center;color:#bbb;margin-bottom:50px;font-size:1rem;
+  }
+
+  /* CARDÁPIO */
+  #cardapio{
+    background:linear-gradient(180deg, #0a0a0a, #100808 50%, #0a0a0a);
+  }
+  .tabs{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:10px;margin-bottom:36px;
+  }
+  .tab{
+    background:transparent;border:1px solid rgba(212,160,23,.4);
+    color:var(--white);padding:10px 18px;border-radius:6px;
+    font-family:'Oswald',sans-serif;letter-spacing:1.5px;text-transform:uppercase;
+    font-size:.85rem;cursor:pointer;transition:all .25s ease;
+  }
+  .tab:hover{border-color:var(--gold);color:var(--gold)}
+  .tab.active{background:var(--red);border-color:var(--red);color:var(--white);box-shadow:0 6px 18px rgba(204,26,26,.4)}
+
+  .menu-grid{
+    display:grid;grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+    gap:20px;
+  }
+  .menu-panel{display:none;animation:fadeIn .4s ease}
+  .menu-panel.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  .menu-card{
+    background:#0f0f0f;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size:200px 200px;
+    border:1px solid rgba(212,160,23,.12);
+    border-left:4px solid var(--red);
+    border-bottom:1px solid rgba(204,26,26,.2);
+    border-radius:4px;padding:18px 18px 18px 20px;
+    display:flex;flex-direction:column;gap:8px;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .menu-card:hover{
+    transform:translateY(-4px);border-color:var(--gold);
+    border-left-color:var(--gold);border-bottom-color:var(--gold);
+    box-shadow:-4px 0 20px rgba(212,160,23,0.15), 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .menu-card .emoji{font-size:2rem}
+  .menu-card .name{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:1.5px;color:var(--white);font-size:1.25rem;
+    text-shadow:1px 1px 0 rgba(204,26,26,0.3);
+  }
+  .menu-card .desc{color:#b9b9b9;font-size:.92rem;flex-grow:1}
+  .menu-card .price{
+    font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);
+    letter-spacing:3px;line-height:1;
+    text-shadow:0 0 20px rgba(212,160,23,.4);
+  }
+  .menu-card .price-highlight{
+    color:var(--gold);text-shadow:0 0 16px rgba(212,160,23,0.5);
+  }
+  .menu-card .btn-mini{
+    align-self:flex-start;background:var(--green);color:#052a13;
+    padding:8px 14px;border-radius:6px;font-weight:600;font-size:.82rem;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:transform .2s ease;
+  }
+  .menu-card .btn-mini:hover{transform:translateY(-2px)}
+
+  /* COMBOS */
+  #combos{background:#080808}
+  .combos-grid{
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:24px;
+  }
+  .combo-card{
+    background:linear-gradient(160deg, #1a0e0e, #100707);
+    background-image:
+      linear-gradient(160deg, #1a0e0e, #100707),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    background-blend-mode:overlay;
+    background-size:auto, 200px 200px;
+    border:1px solid rgba(212,160,23,.3);
+    border-radius:4px;padding:32px 24px;text-align:center;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .combo-card::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 0%, rgba(204,26,26,.15), transparent 60%);
+    pointer-events:none;
+  }
+  .combo-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(204,26,26,.25)}
+  .combo-card .combo-emoji{
+    font-size:2.8rem;display:block;margin-bottom:12px;line-height:1;
+  }
+  .combo-card .combo-badge{
+    position:absolute;top:14px;right:14px;background:#CC1A1A;color:#fff;
+    font-size:.7rem;padding:4px 10px;border-radius:6px;
+    font-family:'Oswald',sans-serif;letter-spacing:1px;
+    text-transform:uppercase;z-index:1;
+  }
+  .combo-card h3{font-size:1.2rem;color:var(--white);margin-bottom:14px;line-height:1.2}
+  .combo-card .combo-price{
+    font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);
+    letter-spacing:3px;line-height:1;margin:12px 0;
+    text-shadow:0 0 20px rgba(212,160,23,.4);
+  }
+  .combo-card p{color:#c5c5c5;margin-bottom:18px;font-size:.95rem}
+  .combo-card .btn-mini{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green);color:#052a13;padding:11px 22px;
+    font-weight:600;border-radius:6px;transition:transform .2s ease;
+  }
+  .combo-card .btn-mini:hover{transform:translateY(-2px)}
+
+  /* FUNCIONAMENTO */
+  #funcionamento{background:#0a0a0a}
+  .info-grid{
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:24px;
+  }
+  .info-block{
+    background:#121212;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size:200px 200px;
+    border:1px solid rgba(212,160,23,.18);
+    border-radius:4px;padding:28px 22px;text-align:center;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .info-block.block-horarios{border-top:3px solid var(--red)}
+  .info-block.block-delivery{border-top:3px solid var(--gold)}
+  .info-block.block-pagamento{border-top:3px solid var(--green)}
+  .info-block:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .info-block .icon{
+    font-size:2.2rem;margin:0 auto 16px;
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(204,26,26,0.12);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .info-block h3{color:var(--gold);font-size:1.1rem;margin-bottom:14px;letter-spacing:2px}
+  .info-block p{color:#cfcfcf;font-size:.95rem;margin-bottom:6px}
+
+  /* DEPOIMENTOS */
+  #depoimentos{background:linear-gradient(180deg,#080808,#100808)}
+  .testimonials{
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:22px;
+  }
+  .whats-card{
+    background:#0b1209;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size:200px 200px;
+    border-radius:4px;padding:18px;
+    border:1px solid rgba(37,211,102,.25);position:relative;
+  }
+  .whats-header{
+    display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  }
+  .whats-avatar{
+    width:38px;height:38px;border-radius:50%;
+    background:#1f7a4e;color:#fff;font-weight:700;font-size:.9rem;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-family:'Inter',sans-serif;
+  }
+  .whats-meta{display:flex;flex-direction:column;flex:1;min-width:0}
+  .whats-name{color:#7ee59a;font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif}
+  .whats-time{color:#666;font-size:.75rem;text-align:right;font-family:'Inter',sans-serif}
+  .whats-bubble{
+    background:var(--green-bg);color:#1f2c20;
+    padding:12px 14px 18px;border-radius:4px 4px 4px 0;
+    font-size:.95rem;line-height:1.5;position:relative;margin-bottom:10px;
+    font-family:'Inter',sans-serif;
+  }
+  .whats-bubble::after{
+    content:"";position:absolute;bottom:-6px;left:6px;width:14px;height:14px;
+    background:var(--green-bg);transform:rotate(45deg);border-bottom-right-radius:3px;
+  }
+  .whats-check{
+    position:absolute;right:10px;bottom:6px;
+    color:#53bdeb;font-size:.7rem;font-weight:700;letter-spacing:-1px;
+  }
+  .whats-stars{
+    text-align:right;color:#ffcd3c;letter-spacing:2px;font-size:.9rem;
+  }
+  .testimonials-note{
+    text-align:center;color:#888;font-size:.85rem;margin-top:22px;font-style:italic;
+  }
+
+  /* FOOTER */
+  footer{
+    background:#050505;padding:60px 0 24px;
+    border-top:1px solid rgba(212,160,23,.2);
+  }
+  .footer-brand{margin-bottom:12px}
+  .footer-brand-fire{font-size:1.2rem;letter-spacing:8px;margin-bottom:4px}
+  .footer-brand-title{display:flex;flex-direction:column;line-height:1}
+  .footer-brand-adega{
+    font-family:'Bebas Neue',sans-serif;font-size:.78rem;
+    letter-spacing:6px;color:#888;
+  }
+  .footer-brand-altas{
+    font-family:'Bebas Neue',sans-serif;font-size:1.6rem;
+    letter-spacing:2px;color:var(--gold);
+    text-shadow:0 0 18px rgba(212,160,23,.45);
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:30px;
+    margin-bottom:30px;
+  }
+  .footer-col h4{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:12px}
+  .footer-col p, .footer-col a{color:#bdbdbd;font-size:.92rem;line-height:1.7;display:block}
+  .footer-col a:hover{color:var(--gold)}
+  .footer-social{display:inline-flex;align-items:center;gap:8px;
+    margin-top:10px;background:linear-gradient(45deg,#fd1d1d,#833ab4,#fcb045);
+    padding:9px 16px;border-radius:6px;color:#fff !important;font-weight:600;
+    transition:transform .2s ease;
+  }
+  .footer-social:hover{transform:translateY(-2px)}
+  .footer-bottom{
+    text-align:center;color:#444;font-size:.82rem;padding-top:24px;
+    border-top:1px solid rgba(212,160,23,0.12);
+  }
+  .investor-link{
+    background:transparent;border:none;color:#5a5a5a;cursor:pointer;
+    font-size:.78rem;text-decoration:underline;padding:6px 0;margin-top:10px;
+    font-family:'Inter',sans-serif;letter-spacing:.3px;
+  }
+  .investor-link:hover{color:var(--gold)}
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.78);
+    display:none;align-items:center;justify-content:center;
+    z-index:1000;padding:20px;backdrop-filter:blur(6px);
+  }
+  .modal-overlay.active{display:flex;animation:fadeIn .25s ease}
+  .modal{
+    background:#111;border:1px solid rgba(212,160,23,.4);
+    border-radius:4px;padding:34px 28px;max-width:520px;width:100%;
+    position:relative;max-height:90vh;overflow-y:auto;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+  }
+  .modal h3{color:var(--gold);font-size:1.3rem;margin-bottom:8px;letter-spacing:2px}
+  .modal .modal-sub{color:#bbb;font-size:.92rem;margin-bottom:24px}
+  .modal-close{
+    position:absolute;top:14px;right:16px;background:transparent;border:none;
+    color:#aaa;font-size:1.6rem;cursor:pointer;line-height:1;
+  }
+  .modal-close:hover{color:var(--red)}
+  .form-field{margin-bottom:16px}
+  .form-field label{display:block;font-size:.82rem;letter-spacing:1px;
+    text-transform:uppercase;color:#cfcfcf;margin-bottom:6px;font-family:'Oswald',sans-serif}
+  .form-field input, .form-field textarea{
+    width:100%;background:#1a1a1a;border:1px solid #2a2a2a;
+    color:var(--white);padding:11px 14px;border-radius:3px;
+    font-family:'Inter',sans-serif;font-size:.95rem;
+    transition:border-color .2s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus{
+    outline:none;border-color:var(--gold);
+  }
+  .radio-group{display:flex;flex-direction:column;gap:8px}
+  .radio-group label{display:flex;align-items:center;gap:10px;
+    text-transform:none;letter-spacing:.3px;font-family:'Inter',sans-serif;
+    color:#dadada;font-size:.92rem;cursor:pointer;margin-bottom:0;
+  }
+  .radio-group input[type="radio"]{accent-color:var(--red);width:auto;flex-shrink:0}
+  .btn-submit{
+    width:100%;background:var(--green);color:#052a13;font-weight:700;
+    padding:13px;border:none;border-radius:6px;font-size:1rem;
+    cursor:pointer;margin-top:8px;letter-spacing:1px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.4)}
+  .form-success{
+    display:none;background:rgba(37,211,102,.15);border:1px solid var(--green);
+    color:#9eecc1;padding:14px;border-radius:3px;text-align:center;
+    margin-top:14px;font-size:.95rem;
+  }
+  .form-success.show{display:block}
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* MOBILE */
+  @media (max-width: 720px){
+    .nav-brand{font-size:.85rem;letter-spacing:1px}
+    .nav-cta{padding:8px 14px;font-size:.8rem}
+    .nav-cta span{display:none}
+    section{padding:70px 0}
+    .brand-adega{letter-spacing:10px}
+    .brand-fire-line{letter-spacing:10px;font-size:1.4rem}
+    .brand-crown{letter-spacing:5px}
+    .cta-main{padding:15px 24px;font-size:1rem;letter-spacing:1.5px}
+    .modal{padding:26px 20px}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .scroll-indicator{animation:none}
+    #embers-canvas{display:none}
+    *{transition:none !important;animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <span class="crown">👑</span><span class="sep">|</span>ALTAS HORAS
+    </a>
+    <a href="https://wa.me/5511970121983?text=Olá!%20Vi%20o%20site%20e%20quero%20fazer%20um%20pedido%20😋"
+       target="_blank" rel="noopener" class="nav-cta">
+      <i class="fab fa-whatsapp"></i> <span>Fazer Pedido</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="embers-canvas"></canvas>
+  <canvas id="noise-overlay"></canvas>
+
+  <div class="hero-brand" aria-label="Logo Adega Espetaria Altas Horas">
+    <img src="./logo.png" alt="Adega Espetaria Altas Horas" class="hero-logo" />
+    <div class="brand-fire-line" aria-hidden="true">🔥🔥🔥</div>
+    <div class="brand-title">
+      <span class="brand-adega">ADEGA</span>
+      <span class="brand-espetaria">ESPETARIA</span>
+      <span class="brand-altas">ALTAS</span>
+      <span class="brand-horas">HORAS</span>
+    </div>
+    <div class="brand-crown">👑 POINT QUENTE 👑</div>
+    <div class="brand-separator"></div>
+  </div>
+
+  <h1>Os melhores <span class="accent">espetos</span> e a cerveja mais gelada de <span class="accent">Batistini</span></h1>
+  <h2>Point Quente • Adega • Restaurante • SBC</h2>
+
+  <div id="status-badge" class="status-badge open" role="status" aria-live="polite">
+    <span class="dot"></span>
+    <span id="status-text">Carregando...</span>
+  </div>
+
+  <div>
+    <a href="https://wa.me/5511970121983?text=Olá!%20Vi%20o%20site%20e%20quero%20fazer%20um%20pedido%20😋"
+       target="_blank" rel="noopener" class="cta-main">
+      <i class="fab fa-whatsapp"></i> Ver Cardápio / Fazer Pedido
+    </a>
+  </div>
+
+  <div class="scroll-indicator">
+    Role para conhecer
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<div class="section-divider" aria-hidden="true"></div>
+
+<!-- CARDÁPIO -->
+<section id="cardapio">
+  <div class="container">
+    <h2 class="section-title reveal">O que tem hoje<span class="under"></span></h2>
+    <p class="section-subtitle reveal">Cardápio direto da brasa pra sua mesa</p>
+
+    <div class="tabs reveal" role="tablist">
+      <button class="tab active" data-tab="espetos" role="tab" aria-selected="true">🥩 Espetos &amp; Grelhados</button>
+      <button class="tab" data-tab="pratos" role="tab">🍲 Pratos do Dia</button>
+      <button class="tab" data-tab="adega" role="tab">🍺 Adega &amp; Bebidas</button>
+      <button class="tab" data-tab="fds" role="tab">🎉 Fim de Semana</button>
+    </div>
+
+    <!-- ESPETOS -->
+    <div class="menu-panel active" id="panel-espetos" role="tabpanel">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <span class="emoji">🥩</span>
+          <h3 class="name">Espetinho Tradicional</h3>
+          <p class="desc">Carne, frango, coração ou queijo — direto da brasa, do jeito que o boteco gosta.</p>
+          <div class="price"><span class="price-highlight">R$ 5,00</span></div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Espetinho%20Tradicional%20🥩"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🔥</span>
+          <h3 class="name">Costela na Brasa</h3>
+          <p class="desc">Costela suculenta assada lentamente. Sabor de churrasco de domingo todo dia.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20o%20valor%20da%20Costela%20na%20Brasa%20🔥"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🍢</span>
+          <h3 class="name">Combo Espetos (5 un.)</h3>
+          <p class="desc">Cinco espetos variados pra dividir com a galera. Pede mais uma gelada e tá feito.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20o%20Combo%20de%205%20Espetos%20🍢"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRATOS DO DIA -->
+    <div class="menu-panel" id="panel-pratos" role="tabpanel">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <span class="emoji">🍛</span>
+          <h3 class="name">Baião de Dois</h3>
+          <p class="desc">Prato típico nordestino, cremoso, com arroz, feijão e aquele tempero da casa.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Baião%20de%20Dois%20🍛"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🥓</span>
+          <h3 class="name">Feijão Tropeiro</h3>
+          <p class="desc">Com torresmo crocante, couve refogada e ovo. Comida de roça com alma de mineiro.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Feijão%20Tropeiro%20🥓"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🧀</span>
+          <h3 class="name">Franguinho à Parmegiana</h3>
+          <p class="desc">Filé de frango com molho de tomate e queijo derretido na hora.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Franguinho%20à%20Parmegiana%20🧀"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">👨‍🍳</span>
+          <h3 class="name">Prato do Dia</h3>
+          <p class="desc">Varia conforme o chef. Pergunte no WhatsApp o que tá saindo hoje.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Qual%20o%20prato%20do%20dia%20hoje?%20👨‍🍳"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Saber o prato de hoje
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🫘</span>
+          <h3 class="name">Feijoadinha Especial</h3>
+          <p class="desc">Quarta e sábado. Aquela feijoada com tudo dentro, pra empurrar com cerveja gelada.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20da%20Feijoadinha%20Especial%20🫘"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADEGA -->
+    <div class="menu-panel" id="panel-adega" role="tabpanel">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <span class="emoji">🍺</span>
+          <h3 class="name">Cervejas Geladíssimas</h3>
+          <p class="desc">Diversas marcas no estoque, sempre congelando. Stella, Heineken, Brahma e mais.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quais%20cervejas%20vocês%20têm%20gelando%20hoje?%20🍺"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Ver opções
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">💳</span>
+          <h3 class="name">Formas de Pagamento</h3>
+          <p class="desc">Pix, débito, crédito e dinheiro — pode escolher como prefere fechar a conta.</p>
+          <div class="price">Aceitamos</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20fazer%20um%20pedido%20💳"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Fazer pedido
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🍲</span>
+          <h3 class="name">Caldos Quentes (Noite)</h3>
+          <p class="desc">Aquele caldo grosso pra esquentar a noite. Servido a partir das 18h.</p>
+          <div class="price">Consultar</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quais%20caldos%20vocês%20têm%20hoje?%20🍲"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FDS -->
+    <div class="menu-panel" id="panel-fds" role="tabpanel">
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <span class="emoji">🍗</span>
+          <h3 class="name">Frango Assado de Domingo</h3>
+          <p class="desc">A partir das 11h. Frango assado especial — o famoso, do jeito que a vó fazia.</p>
+          <div class="price">Domingo</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20reservar%20o%20Frango%20Assado%20de%20Domingo%20🍗"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Reservar o meu
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🫘</span>
+          <h3 class="name">Sábado: Feijoadinha + Adega</h3>
+          <p class="desc">Feijoadinha no almoço, adega aberta, petiscos rolando até a noite.</p>
+          <div class="price">Sábado</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20do%20sábado%20—%20Feijoadinha%20🫘"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Saber mais
+          </a>
+        </div>
+        <div class="menu-card reveal">
+          <span class="emoji">🍻</span>
+          <h3 class="name">Clima de Boteco</h3>
+          <p class="desc">Ambiente de adega de bairro, reunião de amigos. O Point Quente do Batistini.</p>
+          <div class="price">Sempre</div>
+          <a class="btn-mini"
+             href="https://wa.me/5511970121983?text=Olá!%20Quero%20ir%20aí%20no%20fim%20de%20semana%20🍻"
+             target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Avisar que vou
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider-alt" aria-hidden="true"></div>
+
+<!-- COMBOS -->
+<section id="combos">
+  <div class="container">
+    <h2 class="section-title reveal">Ofertas da Casa<span class="under"></span></h2>
+    <p class="section-subtitle reveal">Atualizadas direto pela proprietária</p>
+
+    <div class="combos-grid">
+      <div class="combo-card reveal">
+        <span class="combo-badge">🔥 Destaque</span>
+        <span class="combo-emoji" aria-hidden="true">🍢</span>
+        <h3>Combo Clássico</h3>
+        <p>5 Espetinhos + 1 Cerveja Gelada</p>
+        <div class="combo-price">A partir de R$ 30</div>
+        <a class="btn-mini"
+           href="https://wa.me/5511970121983?text=Olá!%20Quero%20o%20Combo%20Clássico%20—%205%20Espetinhos%20+%201%20Cerveja%20🥩🍺"
+           target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Pedir Combo
+        </a>
+      </div>
+      <div class="combo-card reveal">
+        <span class="combo-badge">🔥 Destaque</span>
+        <span class="combo-emoji" aria-hidden="true">🍽️</span>
+        <h3>Almoço do Dia</h3>
+        <p>Prato + Suco + Sobremesa</p>
+        <div class="combo-price">Peça o prato de hoje</div>
+        <a class="btn-mini"
+           href="https://wa.me/5511970121983?text=Olá!%20Quero%20o%20Almoço%20do%20Dia%20—%20Prato%20+%20Suco%20+%20Sobremesa%20🍛"
+           target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Pedir Almoço
+        </a>
+      </div>
+      <div class="combo-card reveal">
+        <span class="combo-badge">🔥 Destaque</span>
+        <span class="combo-emoji" aria-hidden="true">🍻</span>
+        <h3>Adega do Fim de Semana</h3>
+        <p>Petiscos + Cerveja à vontade</p>
+        <div class="combo-price">Vem com a galera</div>
+        <a class="btn-mini"
+           href="https://wa.me/5511970121983?text=Olá!%20Quero%20a%20Adega%20do%20Fim%20de%20Semana%20—%20Petiscos%20+%20Cerveja%20🍻"
+           target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Garantir Mesa
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" aria-hidden="true"></div>
+
+<!-- FUNCIONAMENTO -->
+<section id="funcionamento">
+  <div class="container">
+    <h2 class="section-title reveal">Funcionamento &amp; Entrega<span class="under"></span></h2>
+    <p class="section-subtitle reveal">Quando estamos abertos e como chega até você</p>
+
+    <div class="info-grid">
+      <div class="info-block block-horarios reveal">
+        <span class="icon">🕐</span>
+        <h3>Horários</h3>
+        <p><strong>Seg-Sex:</strong> Almoço 11h30–16h | Noite 18h–23h</p>
+        <p><strong>Sáb:</strong> 11h–23h (adega + almoço + petisco)</p>
+        <p><strong>Dom:</strong> 11h–17h (Frango Assado Especial)</p>
+      </div>
+      <div class="info-block block-delivery reveal">
+        <span class="icon">🛵</span>
+        <h3>Delivery</h3>
+        <p>Delivery nos arredores do Batistini — SBC</p>
+        <p>Pedido pelo WhatsApp</p>
+        <p>Taxa e tempo: consultar no pedido</p>
+      </div>
+      <div class="info-block block-pagamento reveal">
+        <span class="icon">💳</span>
+        <h3>Pagamentos</h3>
+        <p>Pix | Débito | Crédito | Dinheiro</p>
+        <p>QR Code Pix a combinar</p>
+        <p>Aceitamos todas as bandeiras principais</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider-alt" aria-hidden="true"></div>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <h2 class="section-title reveal">O que falam da casa<span class="under"></span></h2>
+    <p class="section-subtitle reveal">A galera do Batistini que aprova</p>
+
+    <div class="testimonials">
+      <div class="whats-card reveal">
+        <div class="whats-header">
+          <div class="whats-avatar" aria-hidden="true">C</div>
+          <div class="whats-meta">
+            <span class="whats-name">Carlos M.</span>
+          </div>
+          <span class="whats-time">ontem, 20h47</span>
+        </div>
+        <div class="whats-bubble">
+          "Espetinho a 5 reais e ainda gelado! Lugar bom demais, viro cliente fixo"
+          <span class="whats-check" aria-hidden="true">✓✓</span>
+        </div>
+        <div class="whats-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="whats-card reveal">
+        <div class="whats-header">
+          <div class="whats-avatar" aria-hidden="true">P</div>
+          <div class="whats-meta">
+            <span class="whats-name">Patrícia R.</span>
+          </div>
+          <span class="whats-time">seg, 14h12</span>
+        </div>
+        <div class="whats-bubble">
+          "A feijoadinha do sábado é um crime, não consigo parar de comer. Recomendo demais!"
+          <span class="whats-check" aria-hidden="true">✓✓</span>
+        </div>
+        <div class="whats-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+
+      <div class="whats-card reveal">
+        <div class="whats-header">
+          <div class="whats-avatar" aria-hidden="true">R</div>
+          <div class="whats-meta">
+            <span class="whats-name">Rafael T.</span>
+          </div>
+          <span class="whats-time">dom, 12h33</span>
+        </div>
+        <div class="whats-bubble">
+          "Melhor point do Batistini. A dona é um amor e o frango assado do domingo é sagrado."
+          <span class="whats-check" aria-hidden="true">✓✓</span>
+        </div>
+        <div class="whats-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </div>
+    <p class="testimonials-note">Avaliações reais de clientes</p>
+  </div>
+</section>
+
+<div class="section-divider" aria-hidden="true"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <div class="footer-brand-fire" aria-hidden="true">🔥</div>
+          <div class="footer-brand-title">
+            <span class="footer-brand-adega">ADEGA ESPETARIA</span>
+            <span class="footer-brand-altas">ALTAS HORAS</span>
+          </div>
+        </div>
+        <p>O Point Quente do Batistini</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Onde estamos</h4>
+        <p>Rua das Flores, 326</p>
+        <p>Batistini – São Bernardo do Campo / SP</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Fala com a gente</h4>
+        <a href="https://wa.me/5511970121983" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> (11) 97012-1983
+        </a>
+        <a class="footer-social"
+           href="https://www.instagram.com/espetaria_altas_horas_/"
+           target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> @espetaria_altas_horas_
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horários</h4>
+        <p>Seg-Sex: 11h30–16h | 18h–23h</p>
+        <p>Sáb: 11h–23h</p>
+        <p>Dom: 11h–17h</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Adega Espetaria Altas Horas. Todos os direitos reservados.</p>
+      <button class="investor-link" id="open-investor-modal">
+        Informações para Investidores / Oportunidade de Negócio
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: REPASSE -->
+<div class="modal-overlay" id="investor-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" id="close-investor-modal" aria-label="Fechar">&times;</button>
+    <h3 id="modal-title">Oportunidade de Negócio — Espetaria Altas Horas</h3>
+    <p class="modal-sub">Preencha com atenção. Retornaremos apenas com interessados sérios.</p>
+
+    <form id="investor-form" novalidate>
+      <div class="form-field">
+        <label for="inv-name">Nome Completo *</label>
+        <input type="text" id="inv-name" name="nome" required />
+      </div>
+
+      <div class="form-field">
+        <label for="inv-phone">WhatsApp com DDD *</label>
+        <input type="tel" id="inv-phone" name="whats" placeholder="(11) 9XXXX-XXXX" required />
+      </div>
+
+      <div class="form-field">
+        <label for="inv-job">Profissão ou ramo de atuação</label>
+        <input type="text" id="inv-job" name="profissao" />
+      </div>
+
+      <div class="form-field">
+        <label>Capital disponível?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="capital" value="Sim, capital próprio disponível" /> Sim, capital próprio disponível</label>
+          <label><input type="radio" name="capital" value="Sim, via financiamento ou sócio" /> Sim, via financiamento ou sócio</label>
+          <label><input type="radio" name="capital" value="Ainda estou pesquisando valores" /> Ainda estou pesquisando valores</label>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="inv-msg">Mensagem / Motivo do interesse</label>
+        <textarea id="inv-msg" name="mensagem" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Enviar Interesse</button>
+      <div class="form-success" id="form-success">
+        ✅ Recebido! Redirecionando para o WhatsApp...
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+/* ====== BADGE DE STATUS ====== */
+(function statusBadge(){
+  const badge = document.getElementById('status-badge');
+  const txt = document.getElementById('status-text');
+  if(!badge || !txt) return;
+
+  const now = new Date();
+  const day = now.getDay(); // 0=Dom, 1=Seg ... 6=Sab
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const cur = h + m/60;
+
+  let open = false;
+  let msg = '';
+  let nextOpen = '';
+
+  if(day >= 1 && day <= 5){
+    // Seg–Sex: 11h30–16h e 18h–23h
+    if((cur >= 11.5 && cur < 16) || (cur >= 18 && cur < 23)){
+      open = true; msg = 'Estamos Abertos — Peça Agora!';
+    } else if(cur < 11.5){
+      nextOpen = 'Abrimos às 11h30';
+    } else if(cur >= 16 && cur < 18){
+      nextOpen = 'Voltamos às 18h';
+    } else {
+      nextOpen = 'Abrimos amanhã às 11h30';
+    }
+  } else if(day === 6){
+    // Sábado: 11h–23h
+    if(cur >= 11 && cur < 23){
+      open = true; msg = 'Estamos Abertos — Peça Agora!';
+    } else if(cur < 11){
+      nextOpen = 'Abrimos hoje às 11h';
+    } else {
+      nextOpen = 'Amanhã (Dom) abrimos às 11h';
+    }
+  } else if(day === 0){
+    // Domingo: 11h–17h
+    if(cur >= 11 && cur < 17){
+      open = true; msg = 'Abertos! Frango Assado Especial de Domingo';
+    } else if(cur < 11){
+      nextOpen = 'Abrimos hoje às 11h — Frango Assado de Domingo 🍗';
+    } else {
+      nextOpen = 'Voltamos amanhã às 11h30';
+    }
+  }
+
+  if(open){
+    badge.classList.remove('closed');
+    badge.classList.add('open');
+    txt.textContent = '🟢 ' + msg;
+  } else {
+    badge.classList.remove('open');
+    badge.classList.add('closed');
+    txt.textContent = '🔴 Fechado no momento — ' + nextOpen;
+  }
+})();
+
+/* ====== TABS DO CARDÁPIO ====== */
+(function tabsInit(){
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
+      panels.forEach(p => p.classList.remove('active'));
+      t.classList.add('active');
+      t.setAttribute('aria-selected','true');
+      const target = document.getElementById('panel-' + t.dataset.tab);
+      if(target) target.classList.add('active');
+    });
+  });
+})();
+
+/* ====== SCROLL REVEAL ====== */
+(function scrollReveal(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+
+/* ====== MODAL INVESTIDOR ====== */
+(function investorModal(){
+  const open = document.getElementById('open-investor-modal');
+  const close = document.getElementById('close-investor-modal');
+  const overlay = document.getElementById('investor-modal');
+  const form = document.getElementById('investor-form');
+  const success = document.getElementById('form-success');
+
+  function openModal(){ overlay.classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeModal(){ overlay.classList.remove('active'); document.body.style.overflow=''; }
+
+  open.addEventListener('click', openModal);
+  close.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && overlay.classList.contains('active')) closeModal(); });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nome = form.nome.value.trim();
+    const whats = form.whats.value.trim();
+    const profissao = form.profissao.value.trim();
+    const capitalEl = form.querySelector('input[name="capital"]:checked');
+    const capital = capitalEl ? capitalEl.value : 'Não informado';
+    const mensagem = form.mensagem.value.trim();
+
+    if(!nome || !whats){
+      alert('Por favor, preencha Nome e WhatsApp.');
+      return;
+    }
+
+    const body = [
+      'INTERESSE NO NEGÓCIO',
+      '',
+      'Nome: ' + nome,
+      'WhatsApp: ' + whats,
+      'Profissão: ' + (profissao || '—'),
+      'Capital: ' + capital,
+      'Mensagem: ' + (mensagem || '—')
+    ].join('\n');
+
+    const url = 'https://wa.me/5511970121983?text=' + encodeURIComponent(body);
+
+    success.classList.add('show');
+
+    setTimeout(() => {
+      window.open(url, '_blank');
+      success.classList.remove('show');
+      form.reset();
+      closeModal();
+    }, 3000);
+  });
+})();
+
+/* ====== NOISE OVERLAY (textura sépia) ====== */
+(function noiseOverlay(){
+  const cnv = document.getElementById('noise-overlay');
+  const hero = document.getElementById('hero');
+  if(!cnv || !hero) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = cnv.getContext('2d');
+
+  function paint(){
+    const w = hero.clientWidth;
+    const h = hero.clientHeight;
+    cnv.width = w; cnv.height = h;
+    const cell = 2;
+    const cols = Math.ceil(w / cell);
+    const rows = Math.ceil(h / cell);
+    for(let y = 0; y < rows; y++){
+      for(let x = 0; x < cols; x++){
+        const r = Math.random();
+        // tons de marrom escuro / sépia
+        const br = 30 + Math.floor(r * 60);
+        const g  = 20 + Math.floor(r * 40);
+        const b  = 10 + Math.floor(r * 25);
+        ctx.fillStyle = 'rgb(' + br + ',' + g + ',' + b + ')';
+        ctx.fillRect(x * cell, y * cell, cell, cell);
+      }
+    }
+  }
+  paint();
+  window.addEventListener('resize', paint);
+  // sutil refresh para não ficar estático demais (a cada 4s) — desliga em reduced motion
+  if(!prefersReduced){
+    setInterval(paint, 4000);
+  }
+})();
+
+/* ====== THREE.JS BRASAS ====== */
+(function embers(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced) return;
+  if(typeof THREE === 'undefined') return;
+
+  const canvas = document.getElementById('embers-canvas');
+  const hero = document.getElementById('hero');
+  if(!canvas || !hero) return;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
+  camera.position.z = 50;
+
+  function resize(){
+    const w = hero.clientWidth;
+    const h = hero.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COUNT = window.innerWidth < 720 ? 70 : 120;
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(COUNT * 3);
+  const velocities = new Float32Array(COUNT * 3);
+  const colors = new Float32Array(COUNT * 3);
+  const sizes = new Float32Array(COUNT);
+  const lifes = new Float32Array(COUNT);
+
+  const palette = [
+    new THREE.Color('#E8520A'),
+    new THREE.Color('#CC1A1A'),
+    new THREE.Color('#D4A017'),
+    new THREE.Color('#FF7A1A')
+  ];
+
+  function reset(i, fresh){
+    positions[i*3]   = (Math.random() - 0.5) * 80;
+    positions[i*3+1] = -30 + (fresh ? Math.random() * 60 - 30 : 0);
+    positions[i*3+2] = (Math.random() - 0.5) * 10;
+
+    velocities[i*3]   = (Math.random() - 0.5) * 0.06;
+    velocities[i*3+1] = 0.08 + Math.random() * 0.18;
+    velocities[i*3+2] = (Math.random() - 0.5) * 0.02;
+
+    const c = palette[Math.floor(Math.random() * palette.length)];
+    colors[i*3]   = c.r;
+    colors[i*3+1] = c.g;
+    colors[i*3+2] = c.b;
+
+    sizes[i] = 0.5 + Math.random() * 1.4;
+    lifes[i] = Math.random();
+  }
+
+  for(let i = 0; i < COUNT; i++){
+    reset(i, true);
+  }
+
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+  // Soft circular sprite via canvas
+  function makeSprite(){
+    const c = document.createElement('canvas');
+    c.width = c.height = 64;
+    const ctx = c.getContext('2d');
+    const g = ctx.createRadialGradient(32,32,0,32,32,32);
+    g.addColorStop(0, 'rgba(255,255,255,1)');
+    g.addColorStop(0.3, 'rgba(255,200,120,0.85)');
+    g.addColorStop(0.7, 'rgba(255,80,20,0.35)');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,64,64);
+    const tex = new THREE.CanvasTexture(c);
+    return tex;
+  }
+
+  const material = new THREE.PointsMaterial({
+    size: 1.2,
+    map: makeSprite(),
+    vertexColors: true,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    opacity: 0.95,
+    sizeAttenuation: true
+  });
+
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  let last = performance.now();
+  let running = true;
+
+  // Pause when tab is hidden
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; if(running){ last = performance.now(); animate(); } });
+
+  function animate(){
+    if(!running) return;
+    const now = performance.now();
+    const dt = Math.min((now - last) / 16.6667, 3);
+    last = now;
+
+    const pos = geometry.attributes.position.array;
+    const col = geometry.attributes.color.array;
+
+    for(let i = 0; i < COUNT; i++){
+      pos[i*3]   += velocities[i*3] * dt;
+      pos[i*3+1] += velocities[i*3+1] * dt;
+      pos[i*3+2] += velocities[i*3+2] * dt;
+
+      // Slight horizontal drift like rising air
+      velocities[i*3] += (Math.random() - 0.5) * 0.004 * dt;
+
+      lifes[i] += 0.005 * dt;
+
+      // Fade out via color (since we can't easily per-particle alpha)
+      const fade = Math.max(0, 1 - lifes[i]);
+      col[i*3]   *= 0.999;
+      col[i*3+1] *= 0.999;
+      col[i*3+2] *= 0.999;
+
+      if(pos[i*3+1] > 35 || lifes[i] > 1.5){
+        reset(i, false);
+      }
+    }
+
+    geometry.attributes.position.needsUpdate = true;
+    geometry.attributes.color.needsUpdate = true;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
