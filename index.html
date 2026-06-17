@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cinzel:wght@700;900&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
 <style>
@@ -31,7 +31,7 @@
     line-height:1.6;
     overflow-x:hidden;
   }
-  h1,h2,h3,h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+  h1,h2,h3,h4{font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:2px;font-weight:700}
   a{color:inherit;text-decoration:none}
   img{max-width:100%}
   .container{max-width:1200px;margin:0 auto;padding:0 24px}
@@ -50,8 +50,8 @@
     padding:14px 24px;max-width:1200px;margin:0 auto;
   }
   .nav-brand{
-    font-family:'Oswald',sans-serif;font-weight:700;
-    font-size:1.05rem;letter-spacing:2px;color:var(--gold);
+    font-family:'Cinzel',serif;font-weight:700;
+    font-size:.9rem;letter-spacing:3px;color:var(--gold);
     display:flex;align-items:center;gap:10px;
   }
   .nav-brand span.crown{color:var(--gold);}
@@ -61,11 +61,11 @@
   }
   .nav-cta{
     background:var(--green);color:#062b15;font-weight:600;
-    padding:10px 18px;border-radius:4px;display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px;border-radius:2px;display:inline-flex;align-items:center;gap:8px;
     font-size:.9rem;transition:transform .2s ease, box-shadow .2s ease;
-    box-shadow:0 6px 18px rgba(37,211,102,.3);
+    box-shadow:4px 4px 0 rgba(0,0,0,0.5);
   }
-  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.45)}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:6px 6px 0 rgba(0,0,0,0.5)}
 
   /* HERO */
   .hero{
@@ -89,67 +89,28 @@
   }
   .hero > *{position:relative;z-index:2}
 
-  .hero-brand{text-align:center;margin-bottom:28px}
   .hero-logo{
-    width:clamp(120px, 30vw, 200px);
+    width:clamp(180px, 40vw, 280px);
     height:auto;
     object-fit:contain;
-    filter:drop-shadow(0 0 30px rgba(204,26,26,0.5)) drop-shadow(0 0 60px rgba(232,82,10,0.3));
-    margin-bottom:16px;
-  }
-  .brand-fire-line{font-size:2rem;letter-spacing:16px;margin-bottom:4px}
-  .brand-title{display:flex;flex-direction:column;line-height:0.88}
-  .brand-adega{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(1rem,3vw,1.4rem);
-    letter-spacing:20px;
-    color:#888;
-    text-transform:uppercase;
-  }
-  .brand-espetaria{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(3rem,10vw,7rem);
-    letter-spacing:6px;
-    color:var(--white);
-    text-shadow:0 0 60px rgba(232,82,10,0.5), 0 2px 0 #000;
-    line-height:0.9;
-  }
-  .brand-altas{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(4rem,14vw,10rem);
-    letter-spacing:-2px;
-    color:var(--red);
-    text-shadow:0 0 80px rgba(204,26,26,0.8), 0 4px 0 #4a0000;
-    line-height:0.85;
-  }
-  .brand-horas{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(4rem,14vw,10rem);
-    letter-spacing:-2px;
-    color:var(--gold);
-    text-shadow:0 0 60px rgba(212,160,23,0.6), 0 4px 0 #3a2800;
-    line-height:0.85;
-  }
-  .brand-crown{
-    font-family:'Oswald',sans-serif;
-    font-size:clamp(.7rem,1.5vw,1rem);
-    letter-spacing:8px;
-    color:var(--gold);
-    margin-top:12px;
-    opacity:0.8;
-  }
-  .brand-separator{
-    width:120px;height:3px;
-    background:linear-gradient(90deg, transparent, var(--red), var(--gold), transparent);
-    margin:16px auto 0;
+    filter:drop-shadow(0 0 40px rgba(204,26,26,0.6))
+           drop-shadow(0 0 80px rgba(232,82,10,0.3));
+    margin-bottom:32px;
   }
 
   .hero h1{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-style:italic;
+    text-transform:none;
+    letter-spacing:0;
     font-size:clamp(2rem,5vw,3.4rem);color:var(--white);
     max-width:900px;margin:10px auto 16px;line-height:1.1;
   }
   .hero h1 .accent{color:var(--red);text-shadow:0 0 20px rgba(204,26,26,0.5)}
   .hero h2{
+    font-family:'IM Fell English',serif;
+    text-transform:none;
     font-size:clamp(.9rem,2vw,1.1rem);color:var(--gold);
     letter-spacing:5px;font-weight:500;margin-bottom:30px;
   }
@@ -173,17 +134,17 @@
   .cta-main{
     background:linear-gradient(135deg, #1db954, #25D366);
     color:#052a13;
-    font-family:'Oswald',sans-serif;
-    font-size:1.2rem;
-    letter-spacing:2px;
-    padding:18px 40px;
-    border-radius:6px;
+    font-family:'Cinzel',serif;
+    font-size:1rem;
+    letter-spacing:3px;
+    padding:20px 48px;
+    border-radius:2px;
     display:inline-flex;align-items:center;gap:12px;
-    box-shadow:0 8px 32px rgba(37,211,102,.4), inset 0 1px 0 rgba(255,255,255,.2);
+    box-shadow:4px 4px 0 rgba(0,0,0,0.5);
     text-transform:uppercase;font-weight:700;
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .cta-main:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(37,211,102,.5)}
+  .cta-main:hover{transform:translateY(-3px);box-shadow:6px 6px 0 rgba(0,0,0,0.5)}
   .cta-main i{font-size:1.3rem}
 
   .scroll-indicator{
@@ -220,20 +181,22 @@
   section{padding:90px 0;position:relative}
   .section-title{
     text-align:center;
-    font-family:'Bebas Neue',sans-serif;
-    font-size:clamp(2rem,5vw,3.5rem);
-    letter-spacing:6px;
+    font-family:'Cinzel',serif;
+    font-size:clamp(1.6rem,4vw,2.8rem);
+    font-weight:900;
+    letter-spacing:4px;
     color:var(--white);
-    text-shadow:2px 2px 0 rgba(204,26,26,.4);
+    text-shadow:none;
     margin-bottom:8px;
   }
   .section-title .under{
-    display:block;width:60px;height:3px;
-    background:linear-gradient(90deg, var(--red), var(--gold));
-    margin:10px auto 0;border-radius:0;
+    display:block;width:40px;height:2px;
+    background:var(--red);
+    margin:12px auto 0;border-radius:0;
   }
   .section-subtitle{
     text-align:center;color:#bbb;margin-bottom:50px;font-size:1rem;
+    font-family:'IM Fell English',serif;
   }
 
   /* CARDÁPIO */
@@ -245,13 +208,13 @@
     gap:10px;margin-bottom:36px;
   }
   .tab{
-    background:transparent;border:1px solid rgba(212,160,23,.4);
-    color:var(--white);padding:10px 18px;border-radius:6px;
-    font-family:'Oswald',sans-serif;letter-spacing:1.5px;text-transform:uppercase;
-    font-size:.85rem;cursor:pointer;transition:all .25s ease;
+    background:transparent;border:1px solid rgba(212,160,23,.3);
+    color:var(--white);padding:10px 20px;border-radius:0;
+    font-family:'Cinzel',serif;letter-spacing:2px;text-transform:uppercase;
+    font-size:.8rem;cursor:pointer;transition:all .25s ease;
   }
   .tab:hover{border-color:var(--gold);color:var(--gold)}
-  .tab.active{background:var(--red);border-color:var(--red);color:var(--white);box-shadow:0 6px 18px rgba(204,26,26,.4)}
+  .tab.active{background:var(--red);border-color:var(--red);color:var(--white);box-shadow:4px 4px 0 rgba(0,0,0,.4)}
 
   .menu-grid{
     display:grid;grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
@@ -265,28 +228,30 @@
     background:#0f0f0f;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
     background-size:200px 200px;
-    border:1px solid rgba(212,160,23,.12);
-    border-left:4px solid var(--red);
-    border-bottom:1px solid rgba(204,26,26,.2);
-    border-radius:4px;padding:18px 18px 18px 20px;
+    border:1px solid rgba(212,160,23,.2);
+    border-left:3px solid var(--red);
+    border-radius:0;padding:18px 18px 18px 20px;
     display:flex;flex-direction:column;gap:8px;
     transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
   .menu-card:hover{
-    transform:translateY(-4px);border-color:var(--gold);
-    border-left-color:var(--gold);border-bottom-color:var(--gold);
-    box-shadow:-4px 0 20px rgba(212,160,23,0.15), 0 8px 24px rgba(0,0,0,0.4);
+    transform:translateY(-3px);
+    border-left-color:var(--gold);
+    box-shadow:-3px 0 0 var(--gold), 4px 4px 20px rgba(0,0,0,.5);
   }
   .menu-card .emoji{font-size:2rem}
   .menu-card .name{
-    font-family:'Oswald',sans-serif;text-transform:uppercase;
-    letter-spacing:1.5px;color:var(--white);font-size:1.25rem;
+    font-family:'Cinzel',serif;text-transform:uppercase;
+    letter-spacing:2px;color:var(--white);font-size:1rem;
     text-shadow:1px 1px 0 rgba(204,26,26,0.3);
   }
-  .menu-card .desc{color:#b9b9b9;font-size:.92rem;flex-grow:1}
+  .menu-card .desc{
+    color:#b9b9b9;font-size:.92rem;flex-grow:1;
+    font-family:'IM Fell English',serif;
+  }
   .menu-card .price{
-    font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);
-    letter-spacing:3px;line-height:1;
+    font-family:'Inter',sans-serif;font-weight:700;font-size:1.6rem;color:var(--gold);
+    letter-spacing:1px;line-height:1;
     text-shadow:0 0 20px rgba(212,160,23,.4);
   }
   .menu-card .price-highlight{
@@ -294,9 +259,10 @@
   }
   .menu-card .btn-mini{
     align-self:flex-start;background:var(--green);color:#052a13;
-    padding:8px 14px;border-radius:6px;font-weight:600;font-size:.82rem;
+    padding:8px 14px;border-radius:2px;font-weight:600;font-size:.82rem;
     display:inline-flex;align-items:center;gap:6px;
     transition:transform .2s ease;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.5);
   }
   .menu-card .btn-mini:hover{transform:translateY(-2px)}
 
@@ -312,8 +278,9 @@
       url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
     background-blend-mode:overlay;
     background-size:auto, 200px 200px;
-    border:1px solid rgba(212,160,23,.3);
-    border-radius:4px;padding:32px 24px;text-align:center;
+    border:1px solid rgba(212,160,23,.2);
+    border-left:3px solid var(--red);
+    border-radius:0;padding:32px 24px;text-align:center;
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     position:relative;overflow:hidden;
   }
@@ -322,27 +289,39 @@
     background:radial-gradient(circle at 50% 0%, rgba(204,26,26,.15), transparent 60%);
     pointer-events:none;
   }
-  .combo-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(204,26,26,.25)}
+  .combo-card:hover{
+    transform:translateY(-3px);
+    border-left-color:var(--gold);
+    box-shadow:-3px 0 0 var(--gold), 4px 4px 20px rgba(0,0,0,.5);
+  }
   .combo-card .combo-emoji{
     font-size:2.8rem;display:block;margin-bottom:12px;line-height:1;
   }
   .combo-card .combo-badge{
     position:absolute;top:14px;right:14px;background:#CC1A1A;color:#fff;
-    font-size:.7rem;padding:4px 10px;border-radius:6px;
-    font-family:'Oswald',sans-serif;letter-spacing:1px;
+    font-size:.7rem;padding:4px 10px;border-radius:0;
+    font-family:'Cinzel',serif;letter-spacing:1px;
     text-transform:uppercase;z-index:1;
   }
-  .combo-card h3{font-size:1.2rem;color:var(--white);margin-bottom:14px;line-height:1.2}
+  .combo-card h3{
+    font-family:'Cinzel',serif;
+    font-size:1rem;letter-spacing:2px;
+    color:var(--white);margin-bottom:14px;line-height:1.2;
+  }
   .combo-card .combo-price{
-    font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);
-    letter-spacing:3px;line-height:1;margin:12px 0;
+    font-family:'Inter',sans-serif;font-weight:700;font-size:1.6rem;color:var(--gold);
+    letter-spacing:1px;line-height:1;margin:12px 0;
     text-shadow:0 0 20px rgba(212,160,23,.4);
   }
-  .combo-card p{color:#c5c5c5;margin-bottom:18px;font-size:.95rem}
+  .combo-card p{
+    color:#c5c5c5;margin-bottom:18px;font-size:.95rem;
+    font-family:'IM Fell English',serif;
+  }
   .combo-card .btn-mini{
     display:inline-flex;align-items:center;gap:8px;
     background:var(--green);color:#052a13;padding:11px 22px;
-    font-weight:600;border-radius:6px;transition:transform .2s ease;
+    font-weight:600;border-radius:2px;transition:transform .2s ease;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.5);
   }
   .combo-card .btn-mini:hover{transform:translateY(-2px)}
 
@@ -355,14 +334,19 @@
     background:#121212;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
     background-size:200px 200px;
-    border:1px solid rgba(212,160,23,.18);
-    border-radius:4px;padding:28px 22px;text-align:center;
-    transition:border-color .25s ease, transform .25s ease;
+    border:1px solid rgba(212,160,23,.2);
+    border-left:3px solid var(--red);
+    border-radius:0;padding:28px 22px;text-align:center;
+    transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
-  .info-block.block-horarios{border-top:3px solid var(--red)}
-  .info-block.block-delivery{border-top:3px solid var(--gold)}
-  .info-block.block-pagamento{border-top:3px solid var(--green)}
-  .info-block:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .info-block.block-horarios{border-top:1px solid rgba(212,160,23,.2)}
+  .info-block.block-delivery{border-top:1px solid rgba(212,160,23,.2)}
+  .info-block.block-pagamento{border-top:1px solid rgba(212,160,23,.2)}
+  .info-block:hover{
+    border-left-color:var(--gold);
+    box-shadow:-3px 0 0 var(--gold), 4px 4px 20px rgba(0,0,0,.5);
+    transform:translateY(-3px);
+  }
   .info-block .icon{
     font-size:2.2rem;margin:0 auto 16px;
     width:64px;height:64px;border-radius:50%;
@@ -378,11 +362,19 @@
     display:grid;grid-template-columns:repeat(auto-fit, minmax(280px,1fr));gap:22px;
   }
   .whats-card{
-    background:#0b1209;
+    background:#0d0a08;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
     background-size:200px 200px;
-    border-radius:4px;padding:18px;
-    border:1px solid rgba(37,211,102,.25);position:relative;
+    border-radius:0;padding:18px;
+    border:1px solid rgba(212,160,23,.2);
+    border-top:2px solid var(--red);
+    position:relative;
+    transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  }
+  .whats-card:hover{
+    border-left:3px solid var(--gold);
+    box-shadow:-3px 0 0 var(--gold), 4px 4px 20px rgba(0,0,0,.5);
+    transform:translateY(-3px);
   }
   .whats-header{
     display:flex;align-items:center;gap:10px;margin-bottom:12px;
@@ -394,18 +386,16 @@
     flex-shrink:0;font-family:'Inter',sans-serif;
   }
   .whats-meta{display:flex;flex-direction:column;flex:1;min-width:0}
-  .whats-name{color:#7ee59a;font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif}
+  .whats-name{color:var(--gold);font-size:.82rem;font-weight:600;font-family:'Inter',sans-serif}
   .whats-time{color:#666;font-size:.75rem;text-align:right;font-family:'Inter',sans-serif}
   .whats-bubble{
-    background:var(--green-bg);color:#1f2c20;
-    padding:12px 14px 18px;border-radius:4px 4px 4px 0;
+    background:#1a1108;color:var(--white);
+    padding:14px 16px;border-radius:0;
+    border-left:2px solid var(--gold);
     font-size:.95rem;line-height:1.5;position:relative;margin-bottom:10px;
-    font-family:'Inter',sans-serif;
+    font-family:'IM Fell English',serif;
   }
-  .whats-bubble::after{
-    content:"";position:absolute;bottom:-6px;left:6px;width:14px;height:14px;
-    background:var(--green-bg);transform:rotate(45deg);border-bottom-right-radius:3px;
-  }
+  .whats-bubble::after{display:none;}
   .whats-check{
     position:absolute;right:10px;bottom:6px;
     color:#53bdeb;font-size:.7rem;font-weight:700;letter-spacing:-1px;
@@ -426,12 +416,12 @@
   .footer-brand-fire{font-size:1.2rem;letter-spacing:8px;margin-bottom:4px}
   .footer-brand-title{display:flex;flex-direction:column;line-height:1}
   .footer-brand-adega{
-    font-family:'Bebas Neue',sans-serif;font-size:.78rem;
+    font-family:'Cinzel',serif;font-size:.78rem;font-weight:700;
     letter-spacing:6px;color:#888;
   }
   .footer-brand-altas{
-    font-family:'Bebas Neue',sans-serif;font-size:1.6rem;
-    letter-spacing:2px;color:var(--gold);
+    font-family:'Cinzel',serif;font-size:1.4rem;font-weight:900;
+    letter-spacing:3px;color:var(--gold);
     text-shadow:0 0 18px rgba(212,160,23,.45);
   }
   .footer-grid{
@@ -443,8 +433,9 @@
   .footer-col a:hover{color:var(--gold)}
   .footer-social{display:inline-flex;align-items:center;gap:8px;
     margin-top:10px;background:linear-gradient(45deg,#fd1d1d,#833ab4,#fcb045);
-    padding:9px 16px;border-radius:6px;color:#fff !important;font-weight:600;
+    padding:9px 16px;border-radius:2px;color:#fff !important;font-weight:600;
     transition:transform .2s ease;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.5);
   }
   .footer-social:hover{transform:translateY(-2px)}
   .footer-bottom{
@@ -480,7 +471,7 @@
   .modal-close:hover{color:var(--red)}
   .form-field{margin-bottom:16px}
   .form-field label{display:block;font-size:.82rem;letter-spacing:1px;
-    text-transform:uppercase;color:#cfcfcf;margin-bottom:6px;font-family:'Oswald',sans-serif}
+    text-transform:uppercase;color:#cfcfcf;margin-bottom:6px;font-family:'Cinzel',serif}
   .form-field input, .form-field textarea{
     width:100%;background:#1a1a1a;border:1px solid #2a2a2a;
     color:var(--white);padding:11px 14px;border-radius:3px;
@@ -498,11 +489,13 @@
   .radio-group input[type="radio"]{accent-color:var(--red);width:auto;flex-shrink:0}
   .btn-submit{
     width:100%;background:var(--green);color:#052a13;font-weight:700;
-    padding:13px;border:none;border-radius:6px;font-size:1rem;
+    padding:13px;border:none;border-radius:2px;font-size:1rem;
     cursor:pointer;margin-top:8px;letter-spacing:1px;
+    font-family:'Cinzel',serif;
     transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:4px 4px 0 rgba(0,0,0,0.5);
   }
-  .btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.4)}
+  .btn-submit:hover{transform:translateY(-2px);box-shadow:6px 6px 0 rgba(0,0,0,0.5)}
   .form-success{
     display:none;background:rgba(37,211,102,.15);border:1px solid var(--green);
     color:#9eecc1;padding:14px;border-radius:3px;text-align:center;
@@ -516,14 +509,11 @@
 
   /* MOBILE */
   @media (max-width: 720px){
-    .nav-brand{font-size:.85rem;letter-spacing:1px}
+    .nav-brand{font-size:.78rem;letter-spacing:2px}
     .nav-cta{padding:8px 14px;font-size:.8rem}
     .nav-cta span{display:none}
     section{padding:70px 0}
-    .brand-adega{letter-spacing:10px}
-    .brand-fire-line{letter-spacing:10px;font-size:1.4rem}
-    .brand-crown{letter-spacing:5px}
-    .cta-main{padding:15px 24px;font-size:1rem;letter-spacing:1.5px}
+    .cta-main{padding:16px 28px;font-size:.9rem;letter-spacing:2px}
     .modal{padding:26px 20px}
   }
 
@@ -555,18 +545,7 @@
   <canvas id="embers-canvas"></canvas>
   <canvas id="noise-overlay"></canvas>
 
-  <div class="hero-brand" aria-label="Logo Adega Espetaria Altas Horas">
-    <img src="./logo.png" alt="Adega Espetaria Altas Horas" class="hero-logo" />
-    <div class="brand-fire-line" aria-hidden="true">🔥🔥🔥</div>
-    <div class="brand-title">
-      <span class="brand-adega">ADEGA</span>
-      <span class="brand-espetaria">ESPETARIA</span>
-      <span class="brand-altas">ALTAS</span>
-      <span class="brand-horas">HORAS</span>
-    </div>
-    <div class="brand-crown">👑 POINT QUENTE 👑</div>
-    <div class="brand-separator"></div>
-  </div>
+  <img src="./logo.png" alt="Adega Espetaria Altas Horas" class="hero-logo" />
 
   <h1>Os melhores <span class="accent">espetos</span> e a cerveja mais gelada de <span class="accent">Batistini</span></h1>
   <h2>Point Quente • Adega • Restaurante • SBC</h2>
