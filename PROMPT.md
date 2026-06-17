@@ -1,242 +1,161 @@
-Edite o index.html da Espetaria Altas Horas. Mudanças específicas:
+No arquivo index.html da Espetaria Altas Horas, adicione um "quadro negro" 
+de prato do dia ANTES das tabs do cardápio, dentro da section#cardapio, 
+logo após o <p class="section-subtitle">.
 
+## HTML A INSERIR
 
+Cole este bloco entre o <p class="section-subtitle"> e a <div class="tabs">:
 
-\## 1. HERO — Remover texto duplicado, deixar só a logo
+<div class="quadro-negro reveal">
+  <div class="quadro-header">
+    <span class="quadro-icon">🍽️</span>
+    <span class="quadro-label">HOJE NO POINT</span>
+    <span class="quadro-data" id="quadro-data"></span>
+  </div>
+  <div class="quadro-body">
+    <div class="quadro-turno">
+      <span class="turno-tag turno-almoco">☀️ ALMOÇO</span>
+      <p class="turno-desc" id="prato-almoco">Baião de Dois • Feijão Tropeiro • Franguinho à Parmegiana</p>
+    </div>
+    <div class="quadro-divider"></div>
+    <div class="quadro-turno">
+      <span class="turno-tag turno-noite">🔥 NOITE</span>
+      <p class="turno-desc" id="prato-noite">Espetinhos na brasa — carne, frango, coração e queijo</p>
+    </div>
+  </div>
+  <div class="quadro-footer">
+    <a href="https://wa.me/5511970121983?text=Oi!%20Qual%20o%20prato%20de%20hoje%3F%20🍽️"
+       target="_blank" rel="noopener" class="quadro-cta">
+      <i class="fab fa-whatsapp"></i> Perguntar o cardápio de hoje
+    </a>
+  </div>
+</div>
 
+## CSS A ADICIONAR (dentro do <style>, antes do fechamento </style>)
 
+/* QUADRO NEGRO */
+.quadro-negro {
+  background: #0a0800;
+  border: 1px solid rgba(212,160,23,.35);
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--red);
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  position: relative;
+}
+.quadro-negro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 150px;
+  pointer-events: none;
+}
+.quadro-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(212,160,23,.2);
+}
+.quadro-icon { font-size: 1.2rem; }
+.quadro-label {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  font-weight: 700;
+  flex: 1;
+}
+.quadro-data {
+  font-family: 'IM Fell English', serif;
+  font-size: .85rem;
+  color: #666;
+  font-style: italic;
+}
+.quadro-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.quadro-turno { display: flex; flex-direction: column; gap: 10px; }
+.turno-tag {
+  font-family: 'Cinzel', serif;
+  font-size: .7rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid;
+}
+.turno-almoco {
+  color: #D4A017;
+  border-color: rgba(212,160,23,.4);
+  background: rgba(212,160,23,.06);
+}
+.turno-noite {
+  color: #E8520A;
+  border-color: rgba(232,82,10,.4);
+  background: rgba(232,82,10,.06);
+}
+.turno-desc {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.05rem;
+  color: var(--white);
+  line-height: 1.5;
+  font-style: italic;
+}
+.quadro-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, rgba(212,160,23,.3), transparent);
+}
+.quadro-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(212,160,23,.15);
+  text-align: center;
+}
+.quadro-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.quadro-cta:hover { color: var(--gold); }
+.quadro-cta i { color: #25D366; }
 
-Remova completamente o bloco .hero-brand que contém 
-
-brand-fire-line, brand-title (ADEGA / ESPETARIA / ALTAS / HORAS), 
-
-brand-crown e brand-separator.
-
-
-
-Mantenha APENAS a imagem da logo, centralizada, com esse CSS:
-
-.hero-logo {
-
-&#x20; width: clamp(180px, 40vw, 280px);
-
-&#x20; height: auto;
-
-&#x20; object-fit: contain;
-
-&#x20; filter: drop-shadow(0 0 40px rgba(204,26,26,0.6)) 
-
-&#x20;         drop-shadow(0 0 80px rgba(232,82,10,0.3));
-
-&#x20; margin-bottom: 32px;
-
+@media (max-width: 640px) {
+  .quadro-negro { padding: 20px 18px; }
+  .quadro-body { grid-template-columns: 1fr; }
+  .quadro-divider { width: 60px; height: 1px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, rgba(212,160,23,.3), transparent); }
 }
 
-
-
-\## 2. TIPOGRAFIA — Trocar Bebas Neue e Oswald por fontes com alma
-
-
-
-Substitua no <head> o link do Google Fonts por:
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900\&family=Cinzel:wght@700;900\&family=IM+Fell+English:ital@0;1\&family=Inter:wght@400;500;600\&display=swap" rel="stylesheet">
-
-
-
-Mapeamento de uso:
-
-\- Títulos de seção (h2.section-title): font-family: 'Cinzel', serif — letra com peso histórico, gravada em pedra
-
-\- h1 do hero: font-family: 'Playfair Display', serif; font-weight:900; font-style:italic
-
-\- Cards (h3.name): font-family: 'Cinzel', serif; font-size:1rem; letter-spacing:2px
-
-\- Subtítulos e descrições: font-family: 'IM Fell English', serif — tem alma de cardápio antigo de boteco
-
-\- Preços: mantenha Inter mas font-weight:700
-
-\- Corpo geral: Inter como está
-
-
-
-\## 3. BOTÕES — Quadrados, sem pill, sem game
-
-
-
-Substitua em TODO o CSS qualquer border-radius em botões:
-
-\- .cta-main: border-radius: 2px; padding: 20px 48px; letter-spacing:3px; text-transform:uppercase; font-family:'Cinzel',serif; font-size:1rem
-
-\- .nav-cta: border-radius: 2px
-
-\- .btn-mini: border-radius: 2px
-
-\- .tab: border-radius: 2px
-
-\- .btn-submit: border-radius: 2px
-
-\- .combo-card .btn-mini: border-radius: 2px
-
-
-
-Remova box-shadow verde dos botões WhatsApp — substitua por:
-
-box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
-
-
-
-\## 4. CARDS — Sem border-radius, com borda real
-
-
-
-Todos .menu-card, .combo-card, .info-block, .whats-card:
-
-border-radius: 0;
-
-border: 1px solid rgba(212,160,23,.2);
-
-border-left: 3px solid var(--red);
-
-
-
-Hover:
-
-border-left-color: var(--gold);
-
-box-shadow: -3px 0 0 var(--gold), 4px 4px 20px rgba(0,0,0,.5);
-
-transform: translateY(-3px);
-
-
-
-\## 5. SECTION TITLES — Mais austeros
-
-
-
-.section-title {
-
-&#x20; font-family: 'Cinzel', serif;
-
-&#x20; font-size: clamp(1.6rem, 4vw, 2.8rem);
-
-&#x20; font-weight: 900;
-
-&#x20; letter-spacing: 4px;
-
-&#x20; color: var(--white);
-
-&#x20; text-shadow: none;
-
-}
-
-.section-title .under {
-
-&#x20; width: 40px;
-
-&#x20; height: 2px;
-
-&#x20; background: var(--red);
-
-&#x20; margin: 12px auto 0;
-
-&#x20; border-radius: 0;
-
-}
-
-
-
-\## 6. DEPOIMENTOS — Tirar o verde, entrar no tema
-
-
-
-.whats-card {
-
-&#x20; background: #0d0a08;
-
-&#x20; border: 1px solid rgba(212,160,23,.2);
-
-&#x20; border-radius: 0;
-
-&#x20; border-top: 2px solid var(--red);
-
-}
-
-.whats-bubble {
-
-&#x20; background: #1a1108;
-
-&#x20; color: var(--white);
-
-&#x20; border-radius: 0;
-
-&#x20; border-left: 2px solid var(--gold);
-
-&#x20; padding: 14px 16px;
-
-}
-
-.whats-bubble::after { display:none; }
-
-.whats-name { color: var(--gold); }
-
-
-
-\## 7. TABS DO CARDÁPIO — Sem pill
-
-
-
-.tab {
-
-&#x20; border-radius: 0;
-
-&#x20; border: 1px solid rgba(212,160,23,.3);
-
-&#x20; padding: 10px 20px;
-
-&#x20; letter-spacing: 2px;
-
-&#x20; font-family: 'Cinzel', serif;
-
-&#x20; font-size: .8rem;
-
-}
-
-.tab.active {
-
-&#x20; background: var(--red);
-
-&#x20; border-color: var(--red);
-
-&#x20; box-shadow: 4px 4px 0 rgba(0,0,0,.4);
-
-}
-
-
-
-\## 8. NAVBAR
-
-
-
-.nav-brand {
-
-&#x20; font-family: 'Cinzel', serif;
-
-&#x20; letter-spacing: 3px;
-
-&#x20; font-size: .9rem;
-
-}
-
-
-
-\## IMPORTANTE
-
-\- Não mexa na lógica JS
-
-\- Não mexa nos links de WhatsApp  
-
-\- Não mexa na estrutura HTML das seções
-
-\- Apenas CSS e a remoção do bloco hero-brand no HTML
-
+## JS A ADICIONAR (antes do fechamento </script> no final)
+
+// Data no quadro negro
+(function quadroData(){
+  const el = document.getElementById('quadro-data');
+  if(!el) return;
+  const dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const now = new Date();
+  el.textContent = dias[now.getDay()] + ', ' + now.getDate() + ' ' + meses[now.getMonth()];
+})();
+
+## COMO ATUALIZAR O PRATO DO DIA
+
+Para mudar o prato do dia basta editar o texto dentro de:
+- id="prato-almoco" → pratos do almoço
+- id="prato-noite" → o que tem à noite
+
+Exemplo:
+<p class="turno-desc" id="prato-almoco">Feijoadinha Especial • Arroz branco • Couve</p>
