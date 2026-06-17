@@ -629,6 +629,128 @@
     .quadro-divider { width: 60px; height: 1px; margin: 0 auto;
       background: linear-gradient(90deg, transparent, rgba(212,160,23,.3), transparent); }
   }
+
+  /* FAIXAS DO CARDÁPIO */
+  .cardapio-faixa {
+    margin-bottom: 32px;
+    border: 1px solid rgba(212,160,23,.2);
+    border-top: 2px solid var(--red);
+  }
+
+  .faixa-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(204,26,26,.08);
+    border-bottom: 1px solid rgba(212,160,23,.15);
+  }
+
+  .faixa-tag {
+    font-family: 'Cinzel', serif;
+    font-size: .75rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+
+  .faixa-almoco { color: var(--gold); }
+  .faixa-noite { color: var(--orange); }
+
+  .faixa-horario {
+    font-family: 'IM Fell English', serif;
+    font-size: .85rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  .cardapio-lista {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardapio-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    transition: background .2s ease;
+  }
+
+  .cardapio-item:last-child { border-bottom: none; }
+
+  .cardapio-item:hover {
+    background: rgba(212,160,23,.04);
+  }
+
+  .cardapio-item.destaque-especial {
+    background: rgba(212,160,23,.04);
+    border-left: 3px solid var(--gold);
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+  }
+
+  .item-nome {
+    font-family: 'Cinzel', serif;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .item-desc {
+    font-family: 'IM Fell English', serif;
+    font-size: .88rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .item-preco-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .item-preco {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .item-pedir {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid rgba(212,160,23,.4);
+    color: var(--gold);
+    padding: 7px 16px;
+    font-family: 'Cinzel', serif;
+    font-size: .72rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all .2s ease;
+    white-space: nowrap;
+  }
+
+  .item-pedir:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--white);
+  }
+
+  @media (max-width: 640px) {
+    .faixa-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .cardapio-item { flex-wrap: wrap; gap: 10px; }
+    .item-preco-wrap { width: 100%; justify-content: space-between; }
+  }
 </style>
 </head>
 <body>
@@ -707,187 +829,88 @@
       </div>
     </div>
 
-    <div class="tabs reveal" role="tablist">
-      <button class="tab active" data-tab="espetos" role="tab" aria-selected="true">🥩 Espetos &amp; Grelhados</button>
-      <button class="tab" data-tab="pratos" role="tab">🍲 Pratos do Dia</button>
-      <button class="tab" data-tab="adega" role="tab">🍺 Adega &amp; Bebidas</button>
-      <button class="tab" data-tab="fds" role="tab">🎉 Fim de Semana</button>
-    </div>
-
-    <!-- ESPETOS -->
-    <div class="menu-panel active" id="panel-espetos" role="tabpanel">
-      <div class="menu-grid">
-        <div class="menu-card reveal">
-          <span class="emoji">🥩</span>
-          <h3 class="name">Espetinho Tradicional</h3>
-          <p class="desc">Carne, frango, coração ou queijo — direto da brasa, do jeito que o boteco gosta.</p>
-          <div class="price"><span class="price-highlight">R$ 5,00</span></div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Espetinho%20Tradicional%20🥩"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
+    <!-- FAIXA ALMOÇO -->
+    <div class="cardapio-faixa reveal">
+      <div class="faixa-header">
+        <span class="faixa-tag faixa-almoco">☀️ ALMOÇO</span>
+        <span class="faixa-horario">Seg–Sex a partir das 11h30</span>
+      </div>
+      <div class="cardapio-lista">
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Baião de Dois</span>
+            <span class="item-desc">Prato nordestino cremoso com tempero da casa</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Baião%20de%20Dois" target="_blank" rel="noopener">Pedir</a>
         </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🔥</span>
-          <h3 class="name">Costela na Brasa</h3>
-          <p class="desc">Costela suculenta assada lentamente. Sabor de churrasco de domingo todo dia.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20o%20valor%20da%20Costela%20na%20Brasa%20🔥"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Feijão Tropeiro</span>
+            <span class="item-desc">Com torresmo, couve refogada e ovo</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Feijão%20Tropeiro" target="_blank" rel="noopener">Pedir</a>
         </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🍢</span>
-          <h3 class="name">Combo Espetos (5 un.)</h3>
-          <p class="desc">Cinco espetos variados pra dividir com a galera. Pede mais uma gelada e tá feito.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20o%20Combo%20de%205%20Espetos%20🍢"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Franguinho à Parmegiana</span>
+            <span class="item-desc">Filé de frango com molho e queijo derretido</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Franguinho%20à%20Parmegiana" target="_blank" rel="noopener">Pedir</a>
+        </div>
+        <div class="cardapio-item destaque-especial">
+          <div class="item-info">
+            <span class="item-nome">Quarta e Sábado — Feijoadinha 🫘</span>
+            <span class="item-desc">Especial da casa, disponível apenas nesses dias</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20da%20Feijoadinha" target="_blank" rel="noopener">Pedir</a>
+        </div>
+        <div class="cardapio-item destaque-especial">
+          <div class="item-info">
+            <span class="item-nome">Domingo — Frango Assado 🍗</span>
+            <span class="item-desc">O famoso. A partir das 11h, enquanto durar</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20reservar%20o%20Frango%20Assado%20de%20Domingo" target="_blank" rel="noopener">Reservar</a>
         </div>
       </div>
     </div>
 
-    <!-- PRATOS DO DIA -->
-    <div class="menu-panel" id="panel-pratos" role="tabpanel">
-      <div class="menu-grid">
-        <div class="menu-card reveal">
-          <span class="emoji">🍛</span>
-          <h3 class="name">Baião de Dois</h3>
-          <p class="desc">Prato típico nordestino, cremoso, com arroz, feijão e aquele tempero da casa.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Baião%20de%20Dois%20🍛"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
-        </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🥓</span>
-          <h3 class="name">Feijão Tropeiro</h3>
-          <p class="desc">Com torresmo crocante, couve refogada e ovo. Comida de roça com alma de mineiro.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Feijão%20Tropeiro%20🥓"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
-        </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🧀</span>
-          <h3 class="name">Franguinho à Parmegiana</h3>
-          <p class="desc">Filé de frango com molho de tomate e queijo derretido na hora.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Franguinho%20à%20Parmegiana%20🧀"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
-        </div>
-        <div class="menu-card reveal">
-          <span class="emoji">👨‍🍳</span>
-          <h3 class="name">Prato do Dia</h3>
-          <p class="desc">Varia conforme o chef. Pergunte no WhatsApp o que tá saindo hoje.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Qual%20o%20prato%20do%20dia%20hoje?%20👨‍🍳"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Saber o prato de hoje
-          </a>
-        </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🫘</span>
-          <h3 class="name">Feijoadinha Especial</h3>
-          <p class="desc">Quarta e sábado. Aquela feijoada com tudo dentro, pra empurrar com cerveja gelada.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20da%20Feijoadinha%20Especial%20🫘"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
-        </div>
+    <!-- FAIXA ESPETOS -->
+    <div class="cardapio-faixa reveal">
+      <div class="faixa-header">
+        <span class="faixa-tag faixa-noite">🔥 ESPETOS & NOITE</span>
+        <span class="faixa-horario">Todos os dias • Espetinho R$ 5,00</span>
       </div>
-    </div>
-
-    <!-- ADEGA -->
-    <div class="menu-panel" id="panel-adega" role="tabpanel">
-      <div class="menu-grid">
-        <div class="menu-card reveal">
-          <span class="emoji">🍺</span>
-          <h3 class="name">Cervejas Geladíssimas</h3>
-          <p class="desc">Diversas marcas no estoque, sempre congelando. Stella, Heineken, Brahma e mais.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quais%20cervejas%20vocês%20têm%20gelando%20hoje?%20🍺"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Ver opções
-          </a>
+      <div class="cardapio-lista">
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Espetinho Tradicional</span>
+            <span class="item-desc">Carne, frango, coração ou queijo — direto da brasa</span>
+          </div>
+          <div class="item-preco-wrap">
+            <span class="item-preco">R$ 5,00</span>
+            <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Espetinho" target="_blank" rel="noopener">Pedir</a>
+          </div>
         </div>
-        <div class="menu-card reveal">
-          <span class="emoji">💳</span>
-          <h3 class="name">Formas de Pagamento</h3>
-          <p class="desc">Pix, débito, crédito e dinheiro — pode escolher como prefere fechar a conta.</p>
-          <div class="price">Aceitamos</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20fazer%20um%20pedido%20💳"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Fazer pedido
-          </a>
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Costela na Brasa</span>
+            <span class="item-desc">Assada lentamente, suculenta, cheiro de churrasco</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20o%20valor%20da%20Costela" target="_blank" rel="noopener">Consultar</a>
         </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🍲</span>
-          <h3 class="name">Caldos Quentes (Noite)</h3>
-          <p class="desc">Aquele caldo grosso pra esquentar a noite. Servido a partir das 18h.</p>
-          <div class="price">Consultar</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quais%20caldos%20vocês%20têm%20hoje?%20🍲"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
-          </a>
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Combo 5 Espetos</span>
+            <span class="item-desc">Cinco espetos variados pra dividir com a galera</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20o%20Combo%20de%205%20Espetos" target="_blank" rel="noopener">Pedir</a>
         </div>
-      </div>
-    </div>
-
-    <!-- FDS -->
-    <div class="menu-panel" id="panel-fds" role="tabpanel">
-      <div class="menu-grid">
-        <div class="menu-card reveal">
-          <span class="emoji">🍗</span>
-          <h3 class="name">Frango Assado de Domingo</h3>
-          <p class="desc">A partir das 11h. Frango assado especial — o famoso, do jeito que a vó fazia.</p>
-          <div class="price">Domingo</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20reservar%20o%20Frango%20Assado%20de%20Domingo%20🍗"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Reservar o meu
-          </a>
-        </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🫘</span>
-          <h3 class="name">Sábado: Feijoadinha + Adega</h3>
-          <p class="desc">Feijoadinha no almoço, adega aberta, petiscos rolando até a noite.</p>
-          <div class="price">Sábado</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20do%20sábado%20—%20Feijoadinha%20🫘"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Saber mais
-          </a>
-        </div>
-        <div class="menu-card reveal">
-          <span class="emoji">🍻</span>
-          <h3 class="name">Clima de Boteco</h3>
-          <p class="desc">Ambiente de adega de bairro, reunião de amigos. O Point Quente do Batistini.</p>
-          <div class="price">Sempre</div>
-          <a class="btn-mini"
-             href="https://wa.me/5511970121983?text=Olá!%20Quero%20ir%20aí%20no%20fim%20de%20semana%20🍻"
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Avisar que vou
-          </a>
+        <div class="cardapio-item">
+          <div class="item-info">
+            <span class="item-nome">Bebidas & Adega</span>
+            <span class="item-desc">Cervejas geladas, refrigerantes, caldos quentes à noite</span>
+          </div>
+          <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20ver%20as%20bebidas" target="_blank" rel="noopener">Ver opções</a>
         </div>
       </div>
     </div>
@@ -1192,22 +1215,6 @@
     badge.classList.add('closed');
     txt.textContent = '🔴 Fechado no momento — ' + nextOpen;
   }
-})();
-
-/* ====== TABS DO CARDÁPIO ====== */
-(function tabsInit(){
-  const tabs = document.querySelectorAll('.tab');
-  const panels = document.querySelectorAll('.menu-panel');
-  tabs.forEach(t => {
-    t.addEventListener('click', () => {
-      tabs.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
-      panels.forEach(p => p.classList.remove('active'));
-      t.classList.add('active');
-      t.setAttribute('aria-selected','true');
-      const target = document.getElementById('panel-' + t.dataset.tab);
-      if(target) target.classList.add('active');
-    });
-  });
 })();
 
 /* ====== SCROLL REVEAL ====== */

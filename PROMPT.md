@@ -1,161 +1,233 @@
-No arquivo index.html da Espetaria Altas Horas, adicione um "quadro negro" 
-de prato do dia ANTES das tabs do cardápio, dentro da section#cardapio, 
-logo após o <p class="section-subtitle">.
+Edite o index.html da Espetaria Altas Horas. Objetivo: simplificar a seção 
+de cardápio removendo as tabs e reorganizando em duas faixas fixas e limpas.
 
-## HTML A INSERIR
+## 1. REMOVER COMPLETAMENTE
 
-Cole este bloco entre o <p class="section-subtitle"> e a <div class="tabs">:
+Apague todo o bloco das tabs e todos os menu-panels:
+- <div class="tabs reveal" role="tablist"> ... </div>
+- <div class="menu-panel active" id="panel-espetos"> ... </div>
+- <div class="menu-panel" id="panel-pratos"> ... </div>
+- <div class="menu-panel" id="panel-adega"> ... </div>
+- <div class="menu-panel" id="panel-fds"> ... </div>
 
-<div class="quadro-negro reveal">
-  <div class="quadro-header">
-    <span class="quadro-icon">🍽️</span>
-    <span class="quadro-label">HOJE NO POINT</span>
-    <span class="quadro-data" id="quadro-data"></span>
+Remova também o JS das tabs (o bloco que tem querySelectorAll('.tab') e 
+addEventListener para trocar painéis).
+
+## 2. SUBSTITUIR POR DUAS FAIXAS FIXAS
+
+Logo após o quadro-negro, insira este HTML:
+
+<!-- FAIXA ALMOÇO -->
+<div class="cardapio-faixa reveal">
+  <div class="faixa-header">
+    <span class="faixa-tag faixa-almoco">☀️ ALMOÇO</span>
+    <span class="faixa-horario">Seg–Sex a partir das 11h30</span>
   </div>
-  <div class="quadro-body">
-    <div class="quadro-turno">
-      <span class="turno-tag turno-almoco">☀️ ALMOÇO</span>
-      <p class="turno-desc" id="prato-almoco">Baião de Dois • Feijão Tropeiro • Franguinho à Parmegiana</p>
+  <div class="cardapio-lista">
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Baião de Dois</span>
+        <span class="item-desc">Prato nordestino cremoso com tempero da casa</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Baião%20de%20Dois" target="_blank" rel="noopener">Pedir</a>
     </div>
-    <div class="quadro-divider"></div>
-    <div class="quadro-turno">
-      <span class="turno-tag turno-noite">🔥 NOITE</span>
-      <p class="turno-desc" id="prato-noite">Espetinhos na brasa — carne, frango, coração e queijo</p>
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Feijão Tropeiro</span>
+        <span class="item-desc">Com torresmo, couve refogada e ovo</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Feijão%20Tropeiro" target="_blank" rel="noopener">Pedir</a>
     </div>
-  </div>
-  <div class="quadro-footer">
-    <a href="https://wa.me/5511970121983?text=Oi!%20Qual%20o%20prato%20de%20hoje%3F%20🍽️"
-       target="_blank" rel="noopener" class="quadro-cta">
-      <i class="fab fa-whatsapp"></i> Perguntar o cardápio de hoje
-    </a>
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Franguinho à Parmegiana</span>
+        <span class="item-desc">Filé de frango com molho e queijo derretido</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Franguinho%20à%20Parmegiana" target="_blank" rel="noopener">Pedir</a>
+    </div>
+    <div class="cardapio-item destaque-especial">
+      <div class="item-info">
+        <span class="item-nome">Quarta e Sábado — Feijoadinha 🫘</span>
+        <span class="item-desc">Especial da casa, disponível apenas nesses dias</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20da%20Feijoadinha" target="_blank" rel="noopener">Pedir</a>
+    </div>
+    <div class="cardapio-item destaque-especial">
+      <div class="item-info">
+        <span class="item-nome">Domingo — Frango Assado 🍗</span>
+        <span class="item-desc">O famoso. A partir das 11h, enquanto durar</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20reservar%20o%20Frango%20Assado%20de%20Domingo" target="_blank" rel="noopener">Reservar</a>
+    </div>
   </div>
 </div>
 
-## CSS A ADICIONAR (dentro do <style>, antes do fechamento </style>)
+<!-- FAIXA ESPETOS -->
+<div class="cardapio-faixa reveal">
+  <div class="faixa-header">
+    <span class="faixa-tag faixa-noite">🔥 ESPETOS & NOITE</span>
+    <span class="faixa-horario">Todos os dias • Espetinho R$ 5,00</span>
+  </div>
+  <div class="cardapio-lista">
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Espetinho Tradicional</span>
+        <span class="item-desc">Carne, frango, coração ou queijo — direto da brasa</span>
+      </div>
+      <div class="item-preco-wrap">
+        <span class="item-preco">R$ 5,00</span>
+        <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20pedir%20Espetinho" target="_blank" rel="noopener">Pedir</a>
+      </div>
+    </div>
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Costela na Brasa</span>
+        <span class="item-desc">Assada lentamente, suculenta, cheiro de churrasco</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20saber%20o%20valor%20da%20Costela" target="_blank" rel="noopener">Consultar</a>
+    </div>
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Combo 5 Espetos</span>
+        <span class="item-desc">Cinco espetos variados pra dividir com a galera</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20o%20Combo%20de%205%20Espetos" target="_blank" rel="noopener">Pedir</a>
+    </div>
+    <div class="cardapio-item">
+      <div class="item-info">
+        <span class="item-nome">Bebidas & Adega</span>
+        <span class="item-desc">Cervejas geladas, refrigerantes, caldos quentes à noite</span>
+      </div>
+      <a class="item-pedir" href="https://wa.me/5511970121983?text=Olá!%20Quero%20ver%20as%20bebidas" target="_blank" rel="noopener">Ver opções</a>
+    </div>
+  </div>
+</div>
 
-/* QUADRO NEGRO */
-.quadro-negro {
-  background: #0a0800;
-  border: 1px solid rgba(212,160,23,.35);
-  border-top: 3px solid var(--gold);
-  border-bottom: 3px solid var(--red);
-  padding: 28px 32px;
-  margin-bottom: 48px;
-  position: relative;
+## 3. CSS A ADICIONAR (dentro do <style>)
+
+.cardapio-faixa {
+  margin-bottom: 32px;
+  border: 1px solid rgba(212,160,23,.2);
+  border-top: 2px solid var(--red);
 }
-.quadro-negro::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 150px;
-  pointer-events: none;
-}
-.quadro-header {
+
+.faixa-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(212,160,23,.2);
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(204,26,26,.08);
+  border-bottom: 1px solid rgba(212,160,23,.15);
 }
-.quadro-icon { font-size: 1.2rem; }
-.quadro-label {
+
+.faixa-tag {
   font-family: 'Cinzel', serif;
   font-size: .75rem;
-  letter-spacing: 5px;
-  color: var(--gold);
+  letter-spacing: 3px;
   font-weight: 700;
-  flex: 1;
 }
-.quadro-data {
+
+.faixa-almoco { color: var(--gold); }
+.faixa-noite { color: var(--orange); }
+
+.faixa-horario {
   font-family: 'IM Fell English', serif;
   font-size: .85rem;
   color: #666;
   font-style: italic;
 }
-.quadro-body {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
+
+.cardapio-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardapio-item {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  transition: background .2s ease;
 }
-.quadro-turno { display: flex; flex-direction: column; gap: 10px; }
-.turno-tag {
+
+.cardapio-item:last-child { border-bottom: none; }
+
+.cardapio-item:hover {
+  background: rgba(212,160,23,.04);
+}
+
+.cardapio-item.destaque-especial {
+  background: rgba(212,160,23,.04);
+  border-left: 3px solid var(--gold);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.item-nome {
   font-family: 'Cinzel', serif;
-  font-size: .7rem;
-  letter-spacing: 3px;
-  font-weight: 700;
-  display: inline-block;
-  padding: 4px 10px;
-  border: 1px solid;
-}
-.turno-almoco {
-  color: #D4A017;
-  border-color: rgba(212,160,23,.4);
-  background: rgba(212,160,23,.06);
-}
-.turno-noite {
-  color: #E8520A;
-  border-color: rgba(232,82,10,.4);
-  background: rgba(232,82,10,.06);
-}
-.turno-desc {
-  font-family: 'IM Fell English', serif;
-  font-size: 1.05rem;
+  font-size: .9rem;
+  letter-spacing: 1px;
   color: var(--white);
-  line-height: 1.5;
+  font-weight: 700;
+}
+
+.item-desc {
+  font-family: 'IM Fell English', serif;
+  font-size: .88rem;
+  color: #888;
   font-style: italic;
 }
-.quadro-divider {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(180deg, transparent, rgba(212,160,23,.3), transparent);
-}
-.quadro-footer {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(212,160,23,.15);
-  text-align: center;
-}
-.quadro-cta {
-  display: inline-flex;
+
+.item-preco-wrap {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  color: #888;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.item-preco {
   font-family: 'Cinzel', serif;
-  font-size: .75rem;
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.item-pedir {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(212,160,23,.4);
+  color: var(--gold);
+  padding: 7px 16px;
+  font-family: 'Cinzel', serif;
+  font-size: .72rem;
   letter-spacing: 2px;
   text-decoration: none;
-  transition: color .2s ease;
+  transition: all .2s ease;
+  white-space: nowrap;
 }
-.quadro-cta:hover { color: var(--gold); }
-.quadro-cta i { color: #25D366; }
+
+.item-pedir:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
 
 @media (max-width: 640px) {
-  .quadro-negro { padding: 20px 18px; }
-  .quadro-body { grid-template-columns: 1fr; }
-  .quadro-divider { width: 60px; height: 1px; margin: 0 auto;
-    background: linear-gradient(90deg, transparent, rgba(212,160,23,.3), transparent); }
+  .faixa-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .cardapio-item { flex-wrap: wrap; gap: 10px; }
+  .item-preco-wrap { width: 100%; justify-content: space-between; }
 }
 
-## JS A ADICIONAR (antes do fechamento </script> no final)
-
-// Data no quadro negro
-(function quadroData(){
-  const el = document.getElementById('quadro-data');
-  if(!el) return;
-  const dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
-  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const now = new Date();
-  el.textContent = dias[now.getDay()] + ', ' + now.getDate() + ' ' + meses[now.getMonth()];
-})();
-
-## COMO ATUALIZAR O PRATO DO DIA
-
-Para mudar o prato do dia basta editar o texto dentro de:
-- id="prato-almoco" → pratos do almoço
-- id="prato-noite" → o que tem à noite
-
-Exemplo:
-<p class="turno-desc" id="prato-almoco">Feijoadinha Especial • Arroz branco • Couve</p>
+## IMPORTANTE
+- Não mexa em nada fora da section#cardapio
+- Mantenha o quadro-negro intacto
+- Mantenha todos os outros links de WhatsApp do restante do site
+- Não mexa no JS do Three.js, status badge, modal
